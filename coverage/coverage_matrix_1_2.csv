@@ -1,0 +1,17 @@
+subtopic,ac_id,doc_behavior,benchmark_test,benchmark_assertion,generated_test,alignment_verdict,rq1_covered,rq2_aligned
+1.2 Loading an Account,AC-01.1,sdk.accounts.account() returns AccountResponse,sdk-usage: Loading an Account,(implicit — account used without null-check),TS-01.1 — returns non-null AccountResponse,EXPANDED,YES,IMPLICIT
+1.2 Loading an Account,AC-01.2,account.sequenceNumber is accessible,sdk-usage: Loading an Account,expect(account.sequenceNumber isNotNull),TS-01.2 — sequenceNumber is non-null,ALIGNED,YES,YES
+1.2 Loading an Account,AC-01.3,sequenceNumber is non-null for a funded account,sdk-usage: Loading an Account,expect(account.sequenceNumber isNotNull),TS-01.2 — sequenceNumber is non-null,ALIGNED,YES,YES
+1.2 Loading an Account,AC-01.4,sequenceNumber is integer-parseable (required for tx building),sdk-usage: Loading an Account,(not tested),TS-01.3 — int.tryParse() succeeds,EXPANDED,YES,N/A
+1.2 Loading an Account,AC-01.5,API is asynchronous (await-able),sdk-usage: Loading an Account,(implicit — all calls are awaited),All async tests in generated suite,IMPLICIT,YES,IMPLICIT
+1.2 Loading an Account,AC-02.1,account.balances is iterable and non-empty,sdk-usage: Loading an Account,(implicit — for-loop runs without guard),TS-02.1 — balances list is non-empty,EXPANDED,YES,IMPLICIT
+1.2 Loading an Account,AC-02.2,Balance exposes assetType property,sdk-usage: Loading an Account,(implicit — assetType used in condition),TS-02.4 — field access loop without throwing,EXPANDED,YES,IMPLICIT
+1.2 Loading an Account,AC-02.3,Balance exposes balance property (amount),sdk-usage: Loading an Account,double.parse(balance.balance) greaterThan(0),TS-02.3 and TS-02.4,ALIGNED,YES,YES
+1.2 Loading an Account,AC-02.4,assetType == Asset.TYPE_NATIVE identifies XLM,sdk-usage: Loading an Account,if (balance.assetType == Asset.TYPE_NATIVE),TS-02.2 — at least one entry is native,ALIGNED,YES,YES
+1.2 Loading an Account,AC-02.5,Non-native Balance exposes assetCode,sdk-usage: Loading an Account,(else-branch: print(balance.assetCode)),TS-02.4 — field access only (AMB-1: no trustline),PARTIAL,PARTIAL,PARTIAL
+1.2 Loading an Account,AC-02.6,Funded account has at least one native balance entry,sdk-usage: Loading an Account,expect(foundNative true),TS-02.2 — nativeEntries.isNotEmpty,ALIGNED,YES,YES
+1.2 Loading an Account,AC-02.7,Native balance.balance parses as double and is > 0,sdk-usage: Loading an Account,expect(double.parse(balance.balance) greaterThan(0)),TS-02.3 — double.parse(native.balance) > 0,ALIGNED,YES,YES
+1.2 Loading an Account,AC-03.1,Non-existent account throws ErrorResponse,sdk-usage: Loading an Account,(implicit — catch block present but type not asserted),TS-03.1 — caught isA<ErrorResponse>(),EXPANDED,YES,IMPLICIT
+1.2 Loading an Account,AC-03.2,Thrown ErrorResponse.code == 404,sdk-usage: Loading an Account,(implicit — if (e.code == 404) fakeExists = false),TS-03.2 — expect(e.code equals(404)),EXPANDED,YES,IMPLICIT
+1.2 Loading an Account,AC-03.3,try/catch pattern sets exists=false for non-existent account,sdk-usage: Loading an Account,expect(fakeExists false),TS-03.3 — expect(exists isFalse),ALIGNED,YES,YES
+1.2 Loading an Account,AC-03.4,try/catch pattern keeps exists=true for existing account,sdk-usage: Loading an Account,expect(exists true),TS-03.4 — expect(exists isTrue),ALIGNED,YES,YES

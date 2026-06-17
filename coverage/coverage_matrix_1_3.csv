@@ -1,0 +1,8 @@
+subtopic,ac_id,doc_behavior,benchmark_test,benchmark_assertion,generated_test,alignment_verdict,rq1_covered,rq2_aligned
+1.3 Funding Testnet Accounts,AC-01.1,FriendBot.fundTestAccount() is async (await-able),sdk-usage: Funding Testnet Accounts,(implicit — await used without capturing return),TS-01.1 — async test with bare await,ALIGNED,YES,IMPLICIT
+1.3 Funding Testnet Accounts,AC-01.2,Valid G-address accepted as input,sdk-usage: Funding Testnet Accounts,(implicit — KeyPair.random().accountId passed),TS-01.1 — passes KeyPair.random().accountId,ALIGNED,YES,IMPLICIT
+1.3 Funding Testnet Accounts,AC-01.3,Account exists on testnet after funding,sdk-usage: Funding Testnet Accounts,(implicit — account used in setUpAll of benchmark),TS-01.2 — AccountResponse is not null,EXPANDED,YES,IMPLICIT
+1.3 Funding Testnet Accounts,AC-01.4,Funded amount is approximately 10000 XLM,sdk-usage: Funding Testnet Accounts,(not asserted),TS-01.3 — closeTo(10000 100),EXPANDED,YES,N/A
+1.3 Funding Testnet Accounts,AC-01.5,Target must be a new (never-funded) account,sdk-usage: Funding Testnet Accounts,KeyPair.random() used = fresh account,TS-01.1 — uses KeyPair.random(),ALIGNED,YES,YES
+1.3 Funding Testnet Accounts,(AMB-1),Return value of fundTestAccount() (bool true in benchmark),sdk-usage: Funding Testnet Accounts,expect(funded true),NOT TESTED — return type not in docs,DIVERGENT,NO,NO
+1.3 Funding Testnet Accounts,(TL-1 → AC-TL-1),Only works on testnet (mainnet fails),sdk-usage: Funding Testnet Accounts,(not tested),TS-TL-1 — fund fresh account then expect mainnet Horizon lookup to throw (read-only; no XLM spent),ALIGNED,YES,N/A
