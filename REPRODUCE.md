@@ -258,7 +258,7 @@ The key columns are:
 |--------|---------|
 | `rq1_covered` | YES/NO — was the acceptance criterion covered by a generated test? (RQ1) |
 | `rq2_aligned` | YES/NO/N/A — does it align with the benchmark? (RQ2) |
-| `alignment_verdict` | ALIGNED / PARTIAL / MISSING / EXTRA / UNTESTABLE |
+| `alignment_verdict` | ALIGNED / PARTIAL / BENCHMARK-ONLY / GENERATED-ONLY / UNCOVERED |
 
 Aggregate the `rq1_covered` and `rq2_aligned` counts per subtopic and compare to
 the summaries in `coverage/summary_1_1_to_1_6.md` and `coverage/summary_2_1_to_2_4.md`.
